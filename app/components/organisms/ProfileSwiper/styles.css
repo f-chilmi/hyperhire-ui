@@ -1,0 +1,47 @@
+.ProfileSwiper .swiper {
+  width: 100%;
+}
+
+/* .ProfileSwiper .swiper-slide {
+  width: 300px;
+} */
+
+.ProfileSwiper .swiper-3d .swiper-slide-shadow-left {
+  background: none;
+}
+.ProfileSwiper .swiper-3d .swiper-slide-shadow-right {
+  background: none;
+}
+
+/* .ProfileSwiper .swiper-slide-next {
+  transform: translate3d(-145px, 0px, -400px) rotateX(0deg) rotateY(00deg) scale(1) !important;
+}
+.ProfileSwiper .swiper-slide-prev {
+  transform: translate3d(145px, 0px, -400px) rotateX(0deg) rotateY(00deg) scale(1) !important;
+} */
+
+@media (min-width: 481px) {
+  .ProfileSwiper .swiper-slide {
+    width: 300px;
+  }
+  .ProfileSwiper .swiper-slide-next {
+    transform: translate3d(-75px, 0px, -200px) rotateX(0deg) rotateY(0deg) scale(0.9) !important;
+  }
+
+  .ProfileSwiper .swiper-slide-prev {
+    transform: translate3d(75px, 0px, -200px) rotateX(0deg) rotateY(0deg) scale(0.9) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProfileSwiper .swiper-slide {
+    width: 234px;
+  }
+  .ProfileSwiper .swiper-slide-next {
+    transform: translate3d(-150px, 0px, -100px) rotateX(0deg) rotateY(0deg) scale(0.8) !important;
+  }
+
+  .ProfileSwiper .swiper-slide-prev {
+    transform: translate3d(150px, 0px, -100px) rotateX(0deg) rotateY(0deg) scale(0.8) !important;
+  }
+}
