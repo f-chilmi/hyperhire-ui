@@ -3,6 +3,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { LandingCheckboxesMobile } from './fragments';
 import dynamic from 'next/dynamic';
 import { UserSimple } from './components/organisms/ProfileCard';
+import { headers } from 'next/headers';
 
 const LandingFirstTooltip = dynamic(() => import('./fragments/LandingFirstTooltip'));
 const LandingHighlightedPoints = dynamic(() => import('./fragments/LandingHighlightedPoints'));
@@ -12,8 +13,8 @@ const LandingRightSection = dynamic(() => import('./fragments/LandingRightSectio
 const LandingSimpleSwiperWrapper = dynamic(() => import('./fragments/LandingSimpleSwiperWrapper'));
 
 async function fetchData(): Promise<UserSimple[]> {
-  const url = process.env.API_BASE_URL || 'https://hyperhire-ui.vercel.app/';
-  const apiUrl = `${url}/api`;
+  const headersList = headers();
+  const apiUrl = `${headersList.get('x-forwarded-host')?.includes('https') ? headersList.get('x-forwarded-host') : 'https://' + headersList.get('x-forwarded-host')}/api`;
   const response = await fetch(apiUrl);
   if (!response.ok) {
     throw new Error('Failed to fetch data');
@@ -23,6 +24,7 @@ async function fetchData(): Promise<UserSimple[]> {
 
 export default async function Home() {
   const data: UserSimple[] = await fetchData();
+  const headersList = headers();
 
   return (
     <div className="bg-[#FBFBFB] w-screen overflow-y-auto">
@@ -39,7 +41,7 @@ export default async function Home() {
                 <LandingSubtitle />
                 <LandingHighlightedPoints />
               </div>
-              <LandingRightSection data={data} url={''} />
+              <LandingRightSection data={data} url={headersList.get('x-forwarded-host') || ''} />
               <LandingCheckboxesMobile />
             </div>
             <LandingSimpleSwiperWrapper />
