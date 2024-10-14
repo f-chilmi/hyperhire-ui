@@ -1,5 +1,5 @@
-import LogoWhite from './logo-white.png?url';
-import Logo from './logo.png?url';
-import LogoOnly from './logo-only.png?url';
+import LogoWhite from './logo-white.png';
+import Logo from './logo.png';
+import LogoOnly from './logo-only.png';
 
 export { LogoWhite, Logo, LogoOnly };

@@ -23,9 +23,7 @@ function ProfileCard({ data }: { data: UserSimple }) {
         </p>
       </div>
       <div className="flex flex-wrap justify-center gap-2">
-        {data.skills?.map((skill, index) => (
-          <Chip text={skill} key={index} />
-        ))}
+        {data.skills?.map((skill, index) => <Chip text={skill} key={index} />)}
       </div>
     </div>
   );

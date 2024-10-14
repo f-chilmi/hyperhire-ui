@@ -69,7 +69,7 @@ function Navbar(props: Props) {
             );
           }
           return (
-            <Button key={index} variant={item.type as any} className="text-[#343741] ">
+            <Button key={index} variant={item.type} className="text-[#343741] ">
               {item.text}
             </Button>
           );
@@ -104,7 +104,7 @@ function Navbar(props: Props) {
                 return <Dropdown key={index} buttonText={item.text} options={item.options!} />;
               }
               return (
-                <Button key={index} variant={item.type as any}>
+                <Button key={index} variant={item.type}>
                   {item.text}
                 </Button>
               );

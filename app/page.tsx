@@ -2,7 +2,7 @@ import { Footer, Navbar } from './components/organisms';
 import Toolbar from '@mui/material/Toolbar';
 import { LandingCheckboxesMobile } from './fragments';
 import dynamic from 'next/dynamic';
-import { GetServerSideProps } from 'next';
+import { UserSimple } from './components/organisms/ProfileCard';
 
 const LandingFirstTooltip = dynamic(() => import('./fragments/LandingFirstTooltip'));
 const LandingHighlightedPoints = dynamic(() => import('./fragments/LandingHighlightedPoints'));
@@ -11,17 +11,7 @@ const LandingTitle = dynamic(() => import('./fragments/LandingTitle'));
 const LandingRightSection = dynamic(() => import('./fragments/LandingRightSection'));
 const LandingSimpleSwiperWrapper = dynamic(() => import('./fragments/LandingSimpleSwiperWrapper'));
 
-interface DataItem {
-  id: number;
-  name: string;
-  description: string;
-}
-
-interface Props {
-  data: DataItem[];
-}
-
-async function fetchData(): Promise<DataItem[]> {
+async function fetchData(): Promise<UserSimple[]> {
   const response = await fetch('http://localhost:3000/api');
   if (!response.ok) {
     throw new Error('Failed to fetch data');
@@ -30,7 +20,7 @@ async function fetchData(): Promise<DataItem[]> {
 }
 
 export default async function Home() {
-  const data: any = await fetchData(); // Fetch data server-side
+  const data: UserSimple[] = await fetchData(); // Fetch data server-side
 
   return (
     <div className="bg-[#FBFBFB] w-screen overflow-y-auto">
@@ -58,14 +48,3 @@ export default async function Home() {
     </div>
   );
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const res = await fetch('http://localhost:3000/api/data'); // Adjust the URL if needed
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };

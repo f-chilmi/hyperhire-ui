@@ -1,6 +1,6 @@
 import { UserSimple } from '../components/organisms/ProfileCard';
 
-export async function GET(request: Request) {
+export async function GET() {
   const sampleData: UserSimple[] = [
     {
       id: 1,

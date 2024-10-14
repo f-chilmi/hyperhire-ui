@@ -3,10 +3,10 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ProfileSwiper, ProfileCard } from '../components/organisms';
 import { useTransitionDelay } from '../hooks';
-import { Bubble, Button } from '../components/atoms';
+import { Bubble } from '../components/atoms';
 import { UserSimple } from '../components/organisms/ProfileCard';
 
-const LandingRightSection = ({ data }: any) => {
+const LandingRightSection = ({ data }: { data: UserSimple[] }) => {
   const isVisible = useTransitionDelay(1000);
   return (
     <div className={twMerge('', isVisible ? 'opacity-100 animate-fadeIn ' : 'opacity-0')}>

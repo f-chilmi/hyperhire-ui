@@ -8,17 +8,17 @@ const buttonVariants = {
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: keyof typeof buttonVariants;
+  variant?: string; // keyof typeof buttonVariants;
   fullWidth?: boolean;
-  startIcon?: any;
-  endIcon?: any;
+  startIcon?: JSX.Element | null;
+  endIcon?: JSX.Element | null;
   type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({
   children,
   fullWidth = false,
-  color = 'primary',
+  // color = 'primary',
   variant = 'default',
   className = '',
   startIcon = null,
@@ -33,7 +33,7 @@ export default function Button({
       type={type}
       className={twMerge(
         'flex flex-row items-center justify-center gap-x-2 text-lg h-fit px-[24px] py-[6px] md:py-[8px] md:px-[22px] rounded-[8px]',
-        buttonVariants[variant],
+        buttonVariants[variant as keyof typeof buttonVariants],
         fullWidth ? 'w-full' : 'w-fit',
         disabled ? 'opacity-50' : 'opacity-100',
         className,
