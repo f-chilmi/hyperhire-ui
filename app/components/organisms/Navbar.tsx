@@ -98,8 +98,9 @@ function Navbar(props: Props) {
           <Button variant="text" onClick={handleDrawerToggle} className="sm:hidden">
             _
           </Button>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex', flexGrow: 1 } }}>
             {navItems.map((item, index) => {
+              if (item.type === 'flex') return <div key={index} className="h-full grow"></div>;
               if (item.type === 'dropdown') {
                 return <Dropdown key={index} buttonText={item.text} options={item.options!} />;
               }
