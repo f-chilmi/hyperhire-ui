@@ -12,7 +12,7 @@ const LandingRightSection = dynamic(() => import('./fragments/LandingRightSectio
 const LandingSimpleSwiperWrapper = dynamic(() => import('./fragments/LandingSimpleSwiperWrapper'));
 
 async function fetchData(): Promise<UserSimple[]> {
-  const response = await fetch('http://localhost:3000/api');
+  const response = await fetch(`${process.env.API_BASE_URL}/api`);
   if (!response.ok) {
     throw new Error('Failed to fetch data');
   }
