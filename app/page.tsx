@@ -12,7 +12,9 @@ const LandingRightSection = dynamic(() => import('./fragments/LandingRightSectio
 const LandingSimpleSwiperWrapper = dynamic(() => import('./fragments/LandingSimpleSwiperWrapper'));
 
 async function fetchData(): Promise<UserSimple[]> {
-  const response = await fetch(`${process.env.API_BASE_URL}/api`);
+  const url = process.env.API_BASE_URL || 'https://hyperhire-ui.vercel.app/';
+  const apiUrl = `${url}/api`;
+  const response = await fetch(apiUrl);
   if (!response.ok) {
     throw new Error('Failed to fetch data');
   }
@@ -20,7 +22,7 @@ async function fetchData(): Promise<UserSimple[]> {
 }
 
 export default async function Home() {
-  const data: UserSimple[] = await fetchData(); // Fetch data server-side
+  const data: UserSimple[] = await fetchData();
 
   return (
     <div className="bg-[#FBFBFB] w-screen overflow-y-auto">
@@ -37,7 +39,7 @@ export default async function Home() {
                 <LandingSubtitle />
                 <LandingHighlightedPoints />
               </div>
-              <LandingRightSection data={data} />
+              <LandingRightSection data={data} url={''} />
               <LandingCheckboxesMobile />
             </div>
             <LandingSimpleSwiperWrapper />

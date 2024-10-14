@@ -6,8 +6,9 @@ import { useTransitionDelay } from '../hooks';
 import { Bubble } from '../components/atoms';
 import { UserSimple } from '../components/organisms/ProfileCard';
 
-const LandingRightSection = ({ data }: { data: UserSimple[] }) => {
+const LandingRightSection = ({ data, url }: { data: UserSimple[]; url: string }) => {
   const isVisible = useTransitionDelay(1000);
+  console.log(277777, url);
   return (
     <div className={twMerge('', isVisible ? 'opacity-100 animate-fadeIn ' : 'opacity-0')}>
       <div className="w-full flex justify-center mb-10">
